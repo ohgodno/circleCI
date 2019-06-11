@@ -8,7 +8,7 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm install --save-dev gulp jshint gulp-jshint jshint-stylish
+      - run: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-sass gulp-concat node-sass
       - run: sudo npm install --global gulp-cli
       - run: gulp jshint --gulpfile ./js/gulpfile.js
       - run: gulp styles --gulpfile ./js/gulpfile.js
