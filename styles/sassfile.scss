@@ -1,0 +1,44 @@
+$text-color:                 black;
+$light-text-color:           #a0a0a0;
+$quote-text-color:           #f27a00;
+$disclosure-text-color:      #ed7c06;
+
+$thick-border:               8px solid black;
+$dotted-border:              1px dotted #999999;
+
+$header-background-color:    #f07c06;
+$paging-background-color:    black;
+$unfocused-background-color: #f1f0ec;
+$quote-background-color:     #f1f0ec;
+
+$story-title-color:          #f07c05;
+
+#header {
+  height: 72px;
+  background: $paging-background-color;
+
+  h1 {
+    color: $text-color;
+    a {
+      width: 116px;
+      height: 72px;
+      display: block;
+      text-decoration: none;
+    }
+  }
+
+  ul {
+    padding: 0 0 0 25px;
+    li {
+      padding: 0 20px 0 25;
+      text-transform: uppercase;
+      a {
+        color: $light-text-color;
+        text-decoration: none;
+        width: 100px;
+        height: 72px;
+        display: block;
+      }
+    }
+  }
+}
