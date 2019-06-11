@@ -7,22 +7,35 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-concat
-      - run: sudo npm install --global gulp-cli
-      - run: gulp jshint --gulpfile ./js/gulpfile.js
+      - run:
+          name: Install gulp, jshint requirements
+          command: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-concat node-sass
+      - run:
+          name: Install gulp command line
+          command: sudo npm install --global gulp-cli
+      - run:
+          name: Run gulp jshint
+          command: gulp jshint --gulpfile ./js/gulpfile.js
 
   style:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm install --save-dev gulp gulp-sass gulp-concat node-sass
-      - run: sudo npm install --global gulp-cli
-      - run: gulp styles --gulpfile ./js/gulpfile.js
+      - run:
+          name: Install gulp, sass requirements
+          command: npm install --save-dev gulp gulp-sass gulp-concat node-sass
+      - run:
+          name: Install gulp command line
+          command: sudo npm install --global gulp-cli
+      - run:
+          name: Run gulp style
+          command: gulp styles --gulpfile ./js/gulpfile.js
 
 workflows:
   version: 2
   jshint_style:
+    parallelism: 2
     jobs:
       - jshint
       - style
