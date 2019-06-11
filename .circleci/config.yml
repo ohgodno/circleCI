@@ -2,13 +2,27 @@
 version: 2.1
 
 jobs:
-  build:
-    working_directory: ~/tmp
+  jshint:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-sass gulp-concat node-sass
+      - run: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-concat
       - run: sudo npm install --global gulp-cli
       - run: gulp jshint --gulpfile ./js/gulpfile.js
+
+  style:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: npm install --save-dev gulp gulp-sass gulp-concat node-sass
+      - run: sudo npm install --global gulp-cli
       - run: gulp styles --gulpfile ./js/gulpfile.js
+
+workflows:
+  version: 2
+  jshint_style:
+    jobs:
+      - jshint
+      - style
