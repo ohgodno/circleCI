@@ -11,4 +11,5 @@ jobs:
       - run: npm install --save-dev gulp jshint gulp-jshint jshint-stylish
       - run: sudo npm install --global gulp-cli
       - run: cd ./js
+      - run: ls
       - run: gulp jshint
