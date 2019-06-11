@@ -8,6 +8,6 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm install --save-dev gulp jshint gulp-jshint jshint-stylish
+      - run: npm install --save-dev gulp gulp-cli jshint gulp-jshint jshint-stylish
       - run: cd ./js
       - run: gulp jshint
