@@ -35,7 +35,6 @@ jobs:
 workflows:
   version: 2
   jshint_style:
-    parallelism: 2
     jobs:
       - jshint
       - style
