@@ -32,9 +32,25 @@ jobs:
           name: Run gulp style
           command: gulp styles --gulpfile ./js/gulpfile.js
 
+  validate:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: Install gulp, jsValidate requirements
+          command: npm install --save-dev gulp gulp-jsvalidate
+      - run:
+          name: Install gulp command line
+          command: sudo npm install --global gulp-cli
+      - run:
+          name: Run gulp style
+          command: gulp jsValidate --gulpfile ./js/gulpfile.js
+
 workflows:
   version: 2
   jshint_style:
     jobs:
       - jshint
+      - validate
       - style

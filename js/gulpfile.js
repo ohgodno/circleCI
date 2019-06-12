@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	concat = require('gulp-concat'),
-	jshint = require('gulp-jshint');
+	jshint = require('gulp-jshint'),
+	jsValidate = require('gulp-jsvalidate');
 
 gulp.task('styles', function() {
 	return gulp.src('../styles/*.scss')
@@ -16,7 +17,13 @@ gulp.task('jshint', function() {
 		.pipe(jshint.reporter('jshint-stylish'))
 });
 
+gulp.task('jsValidate', function() {
+	return gulp.src('../js/*.js')
+		.pipe(jsValidate())
+});
+
 gulp.task('default', () => {
 	gulp.watch(['../styles/*.scss'], gulp.series('styles'));
+	gulp.watch(['../js/*.js'], gulp.series('jsValidate'));
 	gulp.watch(['../js/*.js'], gulp.series('jshint'));
 });
