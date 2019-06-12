@@ -39,7 +39,7 @@ jobs:
       - checkout
       - run:
           name: Install gulp, jsValidate requirements
-          command: npm install --save-dev gulp gulp-jsvalidate
+          command: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-concat node-sass gulp-jsvalidate
       - run:
           name: Install gulp command line
           command: sudo npm install --global gulp-cli
