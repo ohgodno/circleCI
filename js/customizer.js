@@ -14,4 +14,4 @@ jQuery(window).load(function (){
 
 });
 
-const foo = 'bar;
+const foo = 'bar';
