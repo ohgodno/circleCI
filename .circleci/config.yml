@@ -7,6 +7,8 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
+      - restore_cache:
+          key: -jshint-cache
       - run:
           name: Install gulp, jshint requirements
           command: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-concat node-sass gulp-jsvalidate
@@ -16,12 +18,18 @@ jobs:
       - run:
           name: Run gulp jshint
           command: gulp jshint --gulpfile ./js/gulpfile.js
+      - save_cache:
+          key: -jshint-cache
+          paths:
+            - "node_modules"
 
   style:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
+      - restore_cache:
+          key: -style-cache
       - run:
           name: Install gulp, sass requirements
           command: npm install --save-dev gulp gulp-sass gulp-concat node-sass gulp-jsvalidate
@@ -31,6 +39,10 @@ jobs:
       - run:
           name: Run gulp style
           command: gulp styles --gulpfile ./js/gulpfile.js
+      - save_cache:
+          key: -style-cache
+          paths:
+            - "node_modules"
 
   validate:
     docker:
