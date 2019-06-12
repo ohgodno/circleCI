@@ -28,7 +28,7 @@ logger.on('messageLogged', (arg) => {
 	console.log('listener called', arg);
 });
 
-logger.log('massage');
+logger.log('massage);
 
 console.log('–––––––––––––––––––––––––––––––––');
 
