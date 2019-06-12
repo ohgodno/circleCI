@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: Install gulp, jshint requirements
-          command: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-concat node-sass
+          command: npm install --save-dev gulp jshint gulp-jshint jshint-stylish gulp-concat node-sass gulp-jsvalidate
       - run:
           name: Install gulp command line
           command: sudo npm install --global gulp-cli
@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run:
           name: Install gulp, sass requirements
-          command: npm install --save-dev gulp gulp-sass gulp-concat node-sass
+          command: npm install --save-dev gulp gulp-sass gulp-concat node-sass gulp-jsvalidate
       - run:
           name: Install gulp command line
           command: sudo npm install --global gulp-cli
@@ -44,7 +44,7 @@ jobs:
           name: Install gulp command line
           command: sudo npm install --global gulp-cli
       - run:
-          name: Run gulp style
+          name: Run gulp validate
           command: gulp jsValidate --gulpfile ./js/gulpfile.js
 
 workflows:
